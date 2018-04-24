@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+        <link rel="stylesheet" href="/bootstrap-4.0.0/dist/css/bootstrap.min.css"/>
+         <!-- <link rel="stylesheet" href="/DataTables/datatables-1.10.16/css/jquery.dataTables.min.css"/> -->
+        <!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/> -->
+         
+         
+		<link th:href="@{/main.css}" rel="stylesheet"/>
+      
+    </head>
+    <body>
+    <center>
+    	  <div th:replace="fragments/fragment :: header"></div>
+    	  <h2 th:text=" 'Login as ' + ${#httpServletRequest.remoteUser}">Login as</h2>
+    	  <form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out"/>
+	  </form>
+    	  <h1>List of Students</h1>
+	    <table id="example" class="display" style="width:100%">
+	        	<thead>
+	        		<tr>
+	        			<th>No</th>
+	        			<th>Npm</th>
+	        			<th>Name</th>
+	        			<th>Gpa</th>
+	        			<th>Action</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<tr th:each="student,iterationStatus: ${students}">
+	            		<td th:text="${iterationStatus.count}"></td>
+		       			<td th:text="${student.npm}"></td>
+		       			<td th:text="${student.name}"></td>
+		       			<td>
+		       				<span th:text="${student.gpa}"></span><br/>
+		       				<span class="warn" th:text="(${student.gpa>=3.49}) ? 'Cumlaude!' : 'Sangat Memuaskan!'"></span>
+		       			</td>
+		       			<td><a th:href="'/student/update/' + ${student.npm}"> Update Data </a><br/><a th:href="'/student/delete/' + ${student.npm}"> Delete Data </a><br/></td>   	
+		       		</tr>
+	        	</tbody>
+        </table>
+        
+
+
+        
+    <!-- 	<div th:each="student,iterationStatus: ${students}" th:class="${iterationStatus.odd}? 'odd'">
+            <h3 th:text="'No. ' + ${iterationStatus.count}">No. 1</h3>
+	       	<h3 th:text="'NPM = ' + ${student.npm}">Student NPM</h3>
+	       	<h3 th:text="'Name = ' + ${student.name}">Student Name</h3>
+	       	<h3 th:text="'GPA = ' + ${student.gpa}">Student GPA</h3>
+	       	<h3 th:if="${student.gpa>=3.49}">Cumlaude!</h3>
+	       	<h3 th:unless="${student.gpa>=3.49}">Sangat Memuaskan!</h3>
+	       	<h3 th:text="${student.gpa>=3.49} ? 'Cumlaude!' : 'Sangat Memuaskan!'"></h3>
+	       	<a th:href="'/student/delete/' + ${student.npm}"> Delete Data </a><br/>
+	       	<a th:href="'/student/update/' + ${student.npm}"> Update Data </a><br/>
+	       	<hr/>
+       	</div>	 -->
+       	<div th:replace="fragments/fragment :: footer"></div>
+       	</center>
+    </body>
+</html>
+
+
+<script th:src="@{/DataTables/datatables-1.10.16/js/jquery.dataTables.min.js}">
+$(document).ready(function(){
+    $('#example').DataTable(
+    		{
+    			stateSave: true
+    		});
+});
+</script>
+
+
