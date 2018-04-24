@@ -9,7 +9,8 @@
 		<center>
 		 <div th:replace="fragments/fragment :: header"></div>
 		 	<h2>Welcome To Tutorial 08 APAP</h2>
-		 	<a href="/login">Login</a>
+		 	<a href="/login">Login</a> <br/>
+		 	<a th:if="${#httpServletRequest.isUserInRole('ADMIN')}" href="/student/viewall">View All Student</a><br/>
 		 <div th:replace="fragments/fragment :: footer"></div>
 		 </center>
 	</body>
