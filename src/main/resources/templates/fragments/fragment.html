@@ -19,7 +19,7 @@
 			 				<a class="nav-link" href="/">Home</a>
 			 			</li>
 			 			<li class="nav-item">
-			 				<a class="nav-link" href="/student/viewall">Daftar Mahasiswa</a>
+			 				<a th:if="${#httpServletRequest.isUserInRole('ADMIN')}" class="nav-link" href="/student/viewall">Daftar Mahasiswa</a>
 			 			</li>
 			 			<li class="nav-item">
 			 				<a class="nav-link" href="/student/add">Menambah Mahasiswa</a>
