@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	 <title>Search</title>
+	 <link rel="stylesheet" href="/bootstrap-4.0.0/dist/css/bootstrap.min.css"/>
+	 <link th:href="@{/main.css}" rel="stylesheet"/>
+	</head>
+	<body>
+		<center>
+		 <div th:replace="fragments/fragment :: header"></div>
+		 	<h2>Lihat Data Mahasiswa Berdasarkan NPM</h2>
+	        <form action="/student/view" method="get">
+	        	Masukkan Nomor Pokok Mahasiswa:<br/>
+	        	<input class="form-control" style="width:18%" type="text" name="npm" /><br/>
+	        	<input class="btn btn-success" type="submit" value="Lihat" />
+	        </form>
+		 <div th:replace="fragments/fragment :: footer"></div>
+		 </center>
+	</body>
+</html>
+

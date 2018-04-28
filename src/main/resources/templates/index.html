@@ -11,6 +11,8 @@
 		 	<h2>Welcome To Tutorial 08 APAP</h2>
 		 	<a href="/login">Login</a> <br/>
 		 	<a th:if="${#httpServletRequest.isUserInRole('ADMIN')}" href="/student/viewall">View All Student</a><br/>
+		 	<!-- <a th:if="${#httpServletRequest.isUserInRole('USER')}" href="/student/search">View Student</a><br/> -->
+		 	<a href="/student/search">View Student</a><br/>
 		 <div th:replace="fragments/fragment :: footer"></div>
 		 </center>
 	</body>

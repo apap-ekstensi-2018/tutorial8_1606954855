@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.example.model.StudentModel;
 import com.example.service.StudentService;
 
@@ -66,6 +67,12 @@ public class StudentController
             model.addAttribute ("npm", npm);
             return "not-found";
         }
+    }
+    
+    @RequestMapping("/student/search")
+    public String cari ()
+    {
+        return "search-student";
     }
 
 
