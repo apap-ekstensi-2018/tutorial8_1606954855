@@ -1,6 +1,7 @@
 package com.example;
 
-import javax.activation.DataSource;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -42,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //	}
 	
 	@Autowired
-	javax.sql.DataSource dataSource;
+	DataSource dataSource;
 	
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception
